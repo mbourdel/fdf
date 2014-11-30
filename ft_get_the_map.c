@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 21:34:20 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/11/30 19:45:05 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/11/30 20:47:54 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,22 @@ static int		*ft_get_int_line(int fd, int *line, int *size)
 	char		**split;
 	int			i;
 
-	*size = 0;
-	if (get_next_line(fd, &str) < 0)
+	*size = 1;
+	if (get_next_line(fd, &str) <= 0)
 		return (0);
 	ft_putstr("\nresGNL:\n");
 	ft_putstr(str);
 	split = ft_strsplit(str, ' ');
 	ft_putstr("\nget_line->split\n");
-	while (split[*size])
+	while (split[*size - 1][0])
 	{
 		ft_putstr(split[*size]);
 		ft_putchar(' ');
 		*size = *size + 1;
 	}
+	ft_putstr(" xXx ");
 	line = malloc(sizeof(int) * *size);
+	ft_putstr(" xXx ");
 	i = 0;
 	while (i < *size)
 	{
@@ -72,13 +74,18 @@ t_map			ft_get_the_map(int fd, t_map map)
 	int			*line;
 	int			size;
 	int			i;
+	int			prout;
 
+	prout = 0;
 	size = 1;
 	while (size > 0)
 	{
 		line = ft_get_int_line(fd, line, &size);
+		prout++;
 		i = 0;
 		ft_putstr("\nget_map->line\n");
+		ft_putnbr(prout);
+		ft_putchar('\n');
 		while (i < size)
 		{
 			ft_putnbr(line[i++]);
@@ -89,5 +96,6 @@ t_map			ft_get_the_map(int fd, t_map map)
 			map = ft_put_on_link(line, map, size);
 		free(line);
 	}
+	ft_putnbr(prout);
 	return (map);
 }

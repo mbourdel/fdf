@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 13:06:24 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/11/30 19:41:29 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/11/30 20:42:08 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static char		**ft_split(char **ret, char *str, char c)
 		else
 			x++;
 	}
+	ret[j][0] = '\0';
 	return (ret);
 }
 
