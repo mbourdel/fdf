@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 21:31:05 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/11/29 16:43:03 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/11/30 18:49:54 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FDF_H
@@ -27,6 +27,6 @@ struct					s_line
 
 typedef t_line			*t_map;
 
-t_map					ft_get_the_map(int fd);
+t_map					ft_get_the_map(int fd, t_map map);
 
 #endif
