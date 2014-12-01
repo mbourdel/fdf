@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 13:06:24 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/11/30 20:42:08 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/01 16:01:44 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static char		**ft_split(char **ret, char *str, char c)
 		else
 			x++;
 	}
-	ret[j][0] = '\0';
+	ret[++j][0] = '\0';
 	return (ret);
 }
 
@@ -57,7 +57,7 @@ char			**ft_strsplit(const char *s, char c)
 			nbofstr++;
 	i = 0;
 	ret = (char**)malloc(sizeof(char*) * nbofstr);
-	while (i < nbofstr)
+	while (i <= nbofstr)
 		ret[i++] = (char*)ft_memalloc(ft_strlen(str));
 	return (ft_split(ret, str, c));
 }
