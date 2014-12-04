@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 21:31:05 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/01 19:46:55 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/04 16:48:41 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define SPACE 20
 # define XBEGIN 20
 # define YBEGIN 20
-# define RED 0xFF0000
+# define WHITE 0xFFFFFF
 
 typedef struct s_line	t_line;
 struct					s_line

@@ -6,7 +6,7 @@
 #    By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/27 19:33:24 by mbourdel          #+#    #+#              #
-#    Updated: 2014/12/01 17:57:21 by mbourdel         ###   ########.fr        #
+#    Updated: 2014/12/04 16:29:46 by mbourdel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = fdf
 SRC_PATH = ./
 
 SRC = fdf.c ft_get_the_map.c get_next_line.c
+SRC += ft_set_pt3d.c
 
 OBJ = fdf.o ft_get_the_map.o get_next_line.o
 

@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/01 19:07:09 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/01 19:46:22 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/04 17:05:49 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,14 @@ static int		ft_nb_point(t_map map)
 
 t_ls3d			ft_set_pt3d(t_map map)
 {
-	int			xyz[3];
+	int			xyz[2];
 	t_map		tmp;
 	t_ls3d		point;
 	int			i;
+	int			j;
 
-	point = (t_ls3d)malloc(sizeof(t_pt3d) * ft_nb_point(map));
+	j = 0;
+	point = (t_ls3d)malloc(sizeof(t_pt3d) * (ft_nb_point(map) + 1));
 	tmp = map;
 	xyz[1] = YBEGIN;
 	while (tmp != NULL)
@@ -41,9 +43,14 @@ t_ls3d			ft_set_pt3d(t_map map)
 		i = 0;
 		while (i < tmp->size)
 		{
-			
+			point[j].x = xyz[0];
+			point[j].y = xyz[1];
+			point[j++].z = map->intline[i++] + SPACE;
+			xyz[0] += SPACE;
 		}
+		xyz[1] += SPACE;
+		tmp = tmp->nxt;
 	}
-
+	point[++j].x = 0;
 	return (point);
 }
