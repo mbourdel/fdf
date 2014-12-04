@@ -6,7 +6,7 @@
 #    By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/27 19:33:24 by mbourdel          #+#    #+#              #
-#    Updated: 2014/12/04 16:29:46 by mbourdel         ###   ########.fr        #
+#    Updated: 2014/12/04 19:00:10 by mbourdel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,8 @@ OBJ = fdf.o ft_get_the_map.o get_next_line.o
 LIBFT_PATH = ./libft/
 
 MLX_PATH = ./minilibx_macos/
+
+MLX = -L/usr/X11/lib -lmlx -lXext -lX11
 
 FLAG = -Wall -Werror -Wextra
 
@@ -40,7 +42,7 @@ all: $(NAME)
 $(NAME):
 	@cd $(LIBFT_PATH); $(MAKE) -f Makefile
 	@cd $(MLX_PATH); $(MAKE) -f Makefile
-	@gcc $(FLAG) $(SRC_PATH)$(SRC) -o $(NAME) $(LIBFT_PATH)libft.a $(MLX_PATH)libmlx.a $(FRAM)
+	@gcc $(FLAG) $(SRC_PATH)$(SRC) -o $(NAME) $(LIBFT_PATH)libft.a $(MLX)
 	@echo "${GREEN}     ████████╗██╗  ██╗██╗███████╗    ██╗███████╗"
 	@echo "     ╚══██╔══╝██║  ██║██║██╔════╝    ██║██╔════╝"
 	@echo "        ██║   ███████║██║███████╗    ██║███████╗"

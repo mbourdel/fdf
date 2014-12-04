@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 21:31:05 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/04 16:48:41 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/04 18:06:20 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,18 @@
 # include <fcntl.h>
 # include "./libft/libft.h"
 # include "get_next_line.h"
-# define SPACE 20
-# define XBEGIN 20
-# define YBEGIN 20
+# define SPACE 15
+# define XBEGIN 15
+# define YBEGIN 15
 # define WHITE 0xFFFFFF
+# define RED 0xFF0000
+
+typedef struct s_env	t_env;
+struct					s_env
+{
+	void				*mlx;
+	void				*win;
+};
 
 typedef struct s_line	t_line;
 struct					s_line
