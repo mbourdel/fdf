@@ -6,7 +6,7 @@
 #    By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/27 19:33:24 by mbourdel          #+#    #+#              #
-#    Updated: 2014/12/04 19:00:10 by mbourdel         ###   ########.fr        #
+#    Updated: 2014/12/05 18:26:11 by mbourdel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ OBJ = fdf.o ft_get_the_map.o get_next_line.o
 
 LIBFT_PATH = ./libft/
 
-MLX_PATH = ./minilibx_macos/
+MLX_PATH = ./minilibx/
 
 MLX = -L/usr/X11/lib -lmlx -lXext -lX11
 
