@@ -6,7 +6,7 @@
 #    By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/27 19:33:24 by mbourdel          #+#    #+#              #
-#    Updated: 2014/12/05 19:35:21 by mbourdel         ###   ########.fr        #
+#    Updated: 2014/12/06 16:17:22 by mbourdel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,19 +15,16 @@ NAME = fdf
 SRC_PATH = ./
 
 SRC = fdf.c ft_get_the_map.c get_next_line.c
-SRC += ft_set_pt3d.c ft_set_pt2d.c
+SRC += ft_set_pt3d.c ft_set_pt2d.c ft_make_the_taff.c
+SRC += ft_mlx_stuff.c
 
-OBJ = fdf.o ft_get_the_map.o get_next_line.o
+OBJ = $(SRC:.c=.o)
 
 LIBFT_PATH = ./libft/
-
-MLX_PATH = ./minilibx_macos/
 
 MLX = -L/usr/X11/lib -lmlx -lXext -lX11
 
 FLAG = -Wall -Werror -Wextra
-
-FRAM = -framework OpenGL -framework AppKit
 
 RED = \x1B[0;31m
 
@@ -41,7 +38,6 @@ all: $(NAME)
 
 $(NAME):
 	@cd $(LIBFT_PATH); $(MAKE) -f Makefile
-	@cd $(MLX_PATH); $(MAKE) -f Makefile
 	@gcc $(FLAG) $(SRC_PATH)$(SRC) -o $(NAME) $(LIBFT_PATH)libft.a $(MLX)
 	@echo "${GREEN}     ████████╗██╗  ██╗██╗███████╗    ██╗███████╗"
 	@echo "     ╚══██╔══╝██║  ██║██║██╔════╝    ██║██╔════╝"
@@ -96,3 +92,9 @@ fclean: clean
 	@rm -rf $(NAME)
 
 re: fclean all
+
+deslib:
+	@cd $(LIBFT_PATH); $(MAKE) fclean -f Makefile
+
+total: deslib re
+
