@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/06 12:03:51 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/08 19:11:27 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/08 19:28:01 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void		ft_draw_slope(t_ls2d pt2d, const t_env *env, int i)
 {
 	int		dx;
 	int		dy;
-	int		x_by_y;
+	float	x_by_y;
 	int		a;
 	int		b;
 
@@ -49,14 +49,14 @@ static void		ft_draw_slope(t_ls2d pt2d, const t_env *env, int i)
 	b = 0;
 	dx = abs(pt2d[i].x - pt2d[i - 1].x);
 	dy = abs(pt2d[i].y - pt2d[i - 1].y);
-	x_by_y = (int)(dx / dy);
+	x_by_y = (dx / dy) ? (dx / dy) : (dy / dx);
 	while (b < dx)
 	{
-		a = 0;
+		a = 0;	
 		pt2d[i - 1].y = pt2d[i - 1].y + 1;
 		while (a < x_by_y)
 		{
-			pt2d[i - 1].x = pt2d[i - 1].x + 1;
+			pt2d[i - 1].x = pt2d[i - 1].x + 1;ft_putstr("yo\n");
 			mlx_pixel_put(env->mlx, env->win, pt2d[i - 1].x, pt2d[i - 1].y, RED);
 			a++;	
 		}
