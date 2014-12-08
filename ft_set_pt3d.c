@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/01 19:07:09 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/06 15:25:10 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/08 13:48:54 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ t_ls3d			ft_set_pt3d(t_map map)
 		while (i < tmp->size)
 		{
 			point[j].x = xyz[0];
-			point[j].y = xyz[1];
-			point[j++].z = tmp->intline[i++] * HEIGHT;
+			point[j].z = xyz[1];
+			point[j++].y = tmp->intline[i++] * HEIGHT;
 			xyz[0] += SPACE;
 		}
 		xyz[1] += SPACE;
