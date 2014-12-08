@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 21:31:05 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/08 14:11:38 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/08 16:06:20 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,17 @@
 # include "./libft/libft.h"
 # include "get_next_line.h"
 
-# define WIN_SIZE 1000
+# define XWIN_SIZE 1000
+# define YWIN_SIZE 500
 # define WIN_TITLE "Yoloo"
-# define SPACE 20
-# define HEIGHT 3
-# define XBEGIN 100
+# define SPACE 30
+# define HEIGHT 5
+# define XBEGIN 10
 # define YBEGIN 100
-# define CST 0.7
+# define CST 0.9
 # define WHITE 0xFFFFFF
 # define RED 0xFF0000
+# define COLOR (WHITE - ((pt2d[i].memz) * 1000))
 
 /*
 ** Struct environment
