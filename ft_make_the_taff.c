@@ -6,20 +6,72 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/06 12:03:51 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/10 14:55:38 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/10 18:48:46 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+
+//static void		ft_trace_segment(t_pt2d point,const t_env *env)
+//{
+//	if (point.stay_high == NULL)
+//		return ;
+//	mlx_pixel_put(env->mlx, env->win, point.stay_high->x, point.stay_high->y, RED);
+//	return ;
+//}
+
+static void		ft_draw_flope(t_pt2d origin, t_pt2d arrival, const t_env *env)
+{
+	int		dx;
+	int		dy;
+	int		e;
+	
+	e = arrival.x - origin.x;
+	dx = e * 2;
+	dy = (arrival.y - origin.y) * 2;
+	while (origin.x <= arrival.x)
+	{
+		mlx_pixel_put(env->mlx, env->win, origin.x, origin.y, RED);
+		origin.x = origin.x + 1;
+		if ((e = (e - dy)) <= 0)
+		{
+			origin.y = origin.y + 1;
+			e = e + dx;
+		}
+	}
+	return ;
+}
+
+static void		ft_draw_flope(t_pt2d origin, t_pt2d arrival, const t_env *env)
+{
+	int		dx;
+	int		dy;
+	int		e;
+	
+	e = arrival.x - origin.x;
+	dx = e * 2;
+	dy = (arrival.y - origin.y) * 2;
+	while (origin.x <= arrival.x)
+	{
+		mlx_pixel_put(env->mlx, env->win, origin.x, origin.y, RED);
+		origin.x = origin.x + 1;
+		if ((e = (e - dy)) <= 0)
+		{
+			origin.y = origin.y + 1;
+			e = e + dx;
+		}
+	}
+	return ;
+}
+
+/*
 static void		ft_draw_line(t_ls2d pt2d, const t_env *env, int i)
 {
 	int		dx;
 	int		dy;
 	int		e;
 
-	if (i == 0)
-		return ;
 	e = pt2d[i].x - pt2d[i - 1].x;
 	dx = e * 2;
 	dy = (pt2d[i].y - pt2d[i - 1].y) * 2;
@@ -35,6 +87,7 @@ static void		ft_draw_line(t_ls2d pt2d, const t_env *env, int i)
 	}
 	return ;
 }
+*/
 /*
 static void		ft_draw_slope(t_ls2d pt2d, const t_env *env, int i)
 {
@@ -65,6 +118,7 @@ static void		ft_draw_slope(t_ls2d pt2d, const t_env *env, int i)
 	return ;
 }
 */
+
 static void		ft_draw_pt2d(t_ls2d pt2d, const t_env *env)
 {
 	int		i;
@@ -73,8 +127,15 @@ static void		ft_draw_pt2d(t_ls2d pt2d, const t_env *env)
 	while (pt2d[i].x != 0)
 	{
 		mlx_pixel_put(env->mlx, env->win, pt2d[i].x, pt2d[i].y, COLOR);
-		if (pt2d[i].memz == pt2d[i - 1].memz)
-			ft_draw_line(pt2d, env, i);
+		if (pt2d[i].memz == pt2d[i - 1].memz && i != 0)
+		{
+//			ft_draw_line(pt2d, env, i);
+//			if (pt2d[i].stay_high != NULL)
+				ft_draw_flope(pt2d[i - 1], pt2d[i], env);
+		}
+//		else if (pt2d[i].stay_high != NULL)
+//			ft_draw_flope(pt2d[i].stay_high[0], pt2d[i], env);
+//		ft_trace_segment(pt2d[i], env);
 //		else
 //			ft_draw_slope(pt2d, env, i);
 		i++;
