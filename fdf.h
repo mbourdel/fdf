@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 21:31:05 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/08 16:06:20 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/10 13:33:34 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 
 # define XWIN_SIZE 1000
 # define YWIN_SIZE 500
-# define WIN_TITLE "Yoloo"
 # define SPACE 30
 # define HEIGHT 5
 # define XBEGIN 10
@@ -63,6 +62,7 @@ struct					s_pt3d
 	int					x;
 	int					y;
 	int					z;
+	t_pt3d				*stay_high;
 };
 typedef t_pt3d			*t_ls3d;
 
@@ -72,9 +72,10 @@ typedef t_pt3d			*t_ls3d;
 typedef struct s_pt2d	t_pt2d;
 struct					s_pt2d
 {
-	float					x;
-	float					y;
-	int						memz;
+	float				x;
+	float				y;
+	int					memz;
+	t_pt2d				*stay_high;
 };
 typedef t_pt2d			*t_ls2d;
 

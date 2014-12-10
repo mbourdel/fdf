@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/06 12:03:51 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/08 19:28:01 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/10 14:55:38 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void		ft_draw_line(t_ls2d pt2d, const t_env *env, int i)
 	}
 	return ;
 }
-
+/*
 static void		ft_draw_slope(t_ls2d pt2d, const t_env *env, int i)
 {
 	int		dx;
@@ -52,19 +52,19 @@ static void		ft_draw_slope(t_ls2d pt2d, const t_env *env, int i)
 	x_by_y = (dx / dy) ? (dx / dy) : (dy / dx);
 	while (b < dx)
 	{
-		a = 0;	
+		a = 0;
 		pt2d[i - 1].y = pt2d[i - 1].y + 1;
 		while (a < x_by_y)
 		{
-			pt2d[i - 1].x = pt2d[i - 1].x + 1;ft_putstr("yo\n");
+			pt2d[i - 1].x = pt2d[i - 1].x + 1;
 			mlx_pixel_put(env->mlx, env->win, pt2d[i - 1].x, pt2d[i - 1].y, RED);
-			a++;	
+			a++;
 		}
 		b++;
 	}
 	return ;
 }
-
+*/
 static void		ft_draw_pt2d(t_ls2d pt2d, const t_env *env)
 {
 	int		i;
@@ -75,8 +75,8 @@ static void		ft_draw_pt2d(t_ls2d pt2d, const t_env *env)
 		mlx_pixel_put(env->mlx, env->win, pt2d[i].x, pt2d[i].y, COLOR);
 		if (pt2d[i].memz == pt2d[i - 1].memz)
 			ft_draw_line(pt2d, env, i);
-		else
-			ft_draw_slope(pt2d, env, i);
+//		else
+//			ft_draw_slope(pt2d, env, i);
 		i++;
 	}
 	return ;
