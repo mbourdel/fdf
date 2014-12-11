@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/06 12:03:51 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/10 18:48:46 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/11 13:06:33 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 //	return ;
 //}
 
-static void		ft_draw_flope(t_pt2d origin, t_pt2d arrival, const t_env *env)
+static void		ft_draw_line(t_pt2d origin, t_pt2d arrival, const t_env *env)
 {
 	int		dx;
 	int		dy;
@@ -32,7 +32,7 @@ static void		ft_draw_flope(t_pt2d origin, t_pt2d arrival, const t_env *env)
 	dy = (arrival.y - origin.y) * 2;
 	while (origin.x <= arrival.x)
 	{
-		mlx_pixel_put(env->mlx, env->win, origin.x, origin.y, RED);
+		mlx_pixel_put(env->mlx, env->win, origin.x, origin.y, BCLR);
 		origin.x = origin.x + 1;
 		if ((e = (e - dy)) <= 0)
 		{
@@ -43,81 +43,28 @@ static void		ft_draw_flope(t_pt2d origin, t_pt2d arrival, const t_env *env)
 	return ;
 }
 
-static void		ft_draw_flope(t_pt2d origin, t_pt2d arrival, const t_env *env)
+static void		ft_draw_slope(t_pt2d origin, t_pt2d arrival, const t_env *env)
 {
 	int		dx;
 	int		dy;
 	int		e;
 	
-	e = arrival.x - origin.x;
-	dx = e * 2;
-	dy = (arrival.y - origin.y) * 2;
-	while (origin.x <= arrival.x)
+	e = arrival.y - origin.y;
+	dy = e * 2;
+	dx = (arrival.x - origin.x) * 2;
+	while (origin.y <= arrival.y)
 	{
 		mlx_pixel_put(env->mlx, env->win, origin.x, origin.y, RED);
-		origin.x = origin.x + 1;
-		if ((e = (e - dy)) <= 0)
+		origin.y = origin.y + 1;
+		if ((e = (e - dx)) <= 0)
 		{
-			origin.y = origin.y + 1;
-			e = e + dx;
+			origin.x = origin.x + 1;
+			e = e + dy;
 		}
 	}
 	return ;
 }
 
-/*
-static void		ft_draw_line(t_ls2d pt2d, const t_env *env, int i)
-{
-	int		dx;
-	int		dy;
-	int		e;
-
-	e = pt2d[i].x - pt2d[i - 1].x;
-	dx = e * 2;
-	dy = (pt2d[i].y - pt2d[i - 1].y) * 2;
-	while (pt2d[i - 1].x <= pt2d[i].x)
-	{
-		mlx_pixel_put(env->mlx, env->win, pt2d[i - 1].x, pt2d[i - 1].y, COLOR);
-		pt2d[i - 1].x = pt2d[i - 1].x + 1;
-		if ((e = (e - dy)) <= 0)
-		{
-			pt2d[i - 1].y = pt2d[i - 1].y + 1;
-			e = e + dx;
-		}
-	}
-	return ;
-}
-*/
-/*
-static void		ft_draw_slope(t_ls2d pt2d, const t_env *env, int i)
-{
-	int		dx;
-	int		dy;
-	float	x_by_y;
-	int		a;
-	int		b;
-
-	if (i == 0)
-		return ;
-	b = 0;
-	dx = abs(pt2d[i].x - pt2d[i - 1].x);
-	dy = abs(pt2d[i].y - pt2d[i - 1].y);
-	x_by_y = (dx / dy) ? (dx / dy) : (dy / dx);
-	while (b < dx)
-	{
-		a = 0;
-		pt2d[i - 1].y = pt2d[i - 1].y + 1;
-		while (a < x_by_y)
-		{
-			pt2d[i - 1].x = pt2d[i - 1].x + 1;
-			mlx_pixel_put(env->mlx, env->win, pt2d[i - 1].x, pt2d[i - 1].y, RED);
-			a++;
-		}
-		b++;
-	}
-	return ;
-}
-*/
 
 static void		ft_draw_pt2d(t_ls2d pt2d, const t_env *env)
 {
@@ -129,15 +76,40 @@ static void		ft_draw_pt2d(t_ls2d pt2d, const t_env *env)
 		mlx_pixel_put(env->mlx, env->win, pt2d[i].x, pt2d[i].y, COLOR);
 		if (pt2d[i].memz == pt2d[i - 1].memz && i != 0)
 		{
-//			ft_draw_line(pt2d, env, i);
-//			if (pt2d[i].stay_high != NULL)
-				ft_draw_flope(pt2d[i - 1], pt2d[i], env);
+			ft_draw_line(pt2d[i - 1], pt2d[i], env);
+			if (pt2d[i].stay_high != NULL)
+			{
+				if (pt2d[i].stay_high->memz != pt2d[i].memz)
+					ft_draw_slope(pt2d[i].stay_high[0], pt2d[i], env);
+				else
+				{
+					ft_draw_line(pt2d[i].stay_high[0], pt2d[i], env);
+					ft_draw_slope(pt2d[i], pt2d[i].stay_high[0], env);
+				}
+			}
 		}
-//		else if (pt2d[i].stay_high != NULL)
-//			ft_draw_flope(pt2d[i].stay_high[0], pt2d[i], env);
-//		ft_trace_segment(pt2d[i], env);
-//		else
-//			ft_draw_slope(pt2d, env, i);
+		else if (i != 0)
+		{
+			ft_draw_line(pt2d[i], pt2d[i - 1], env);
+			if (pt2d[i].stay_high != NULL)
+			{
+				if (pt2d[i].stay_high->memz != pt2d[i].memz)
+					ft_draw_slope(pt2d[i], pt2d[i].stay_high[0], env);
+				else
+					ft_draw_line(pt2d[i].stay_high[0], pt2d[i], env);
+			}
+		}
+//		if (pt2d[i].stay_high != NULL)
+//		{
+//			if (pt2d[i].stay_high->memz != pt2d[i].memz)
+//				ft_draw_slope(pt2d[i].stay_high[0], pt2d[i], env);
+//			else
+//			{
+//				ft_draw_line(pt2d[i].stay_high[0], pt2d[i], env);
+//				ft_draw_slope(pt2d[i], pt2d[i].stay_high[0], env);
+//			}
+//		}
+
 		i++;
 	}
 	return ;

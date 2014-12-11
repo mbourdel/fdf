@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 21:31:05 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/10 13:33:34 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/11 13:30:14 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,15 @@
 
 # define XWIN_SIZE 1000
 # define YWIN_SIZE 500
-# define SPACE 30
-# define HEIGHT 5
-# define XBEGIN 10
-# define YBEGIN 100
+# define SPACE 20
+# define HEIGHT 10
+# define XBEGIN 1
+# define YBEGIN 400
 # define CST 0.9
 # define WHITE 0xFFFFFF
 # define RED 0xFF0000
 # define COLOR (WHITE - ((pt2d[i].memz) * 1000))
+# define BCLR (WHITE - ((origin.memz) * 1000))
 
 /*
 ** Struct environment
