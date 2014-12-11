@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/06 12:03:51 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/11 13:06:33 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/11 14:36:35 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void		ft_draw_line(t_pt2d origin, t_pt2d arrival, const t_env *env)
 	dy = (arrival.y - origin.y) * 2;
 	while (origin.x <= arrival.x)
 	{
-		mlx_pixel_put(env->mlx, env->win, origin.x, origin.y, BCLR);
+		mlx_pixel_put(env->mlx, env->win, origin.x, origin.y, ACLR);
 		origin.x = origin.x + 1;
 		if ((e = (e - dy)) <= 0)
 		{
@@ -54,7 +54,7 @@ static void		ft_draw_slope(t_pt2d origin, t_pt2d arrival, const t_env *env)
 	dx = (arrival.x - origin.x) * 2;
 	while (origin.y <= arrival.y)
 	{
-		mlx_pixel_put(env->mlx, env->win, origin.x, origin.y, RED);
+		mlx_pixel_put(env->mlx, env->win, origin.x, origin.y, BCLR);
 		origin.y = origin.y + 1;
 		if ((e = (e - dx)) <= 0)
 		{
