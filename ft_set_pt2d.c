@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/05 19:08:54 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/10 15:05:14 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/12 18:26:51 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,6 @@ t_ls2d			ft_set_pt2d(t_ls3d pt3d)
 		point[i].y = (-pt3d[i].y + ((CST / 2) * pt3d[i].z));
 		point[i].memz = pt3d[i].y;
 		point[i].stay_high = ft_stay_high(i, pt3d);
-		if (point[i].stay_high != NULL)
-		{
-			ft_putstr("X-Y of   ");
-			ft_putnbr(i);
-			ft_putstr("  alt:  ");
-			ft_putnbr(point[i].stay_high->memz);
-			ft_putchar('\n');
-			ft_putnbr(point[i].stay_high->x);
-			ft_putchar('-');
-			ft_putnbr(point[i].stay_high->y);
-			ft_putchar('\n');
-		}
 		i++;
 	}
 	return (point);
