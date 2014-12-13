@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/06 12:03:51 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/12 18:26:21 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/13 18:01:56 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,32 @@ static void		ft_draw_slope(t_pt2d origin, t_pt2d arrival, const t_env *env)
 	return ;
 }
 
+static void		ft_choose_itself_like_a_big_boy(t_ls2d pt2d, int i,const t_env *env)
+{
+	if (pt2d[i].memz == pt2d[i - 1].memz)
+	{
+		ft_draw_line(pt2d[i - 1], pt2d[i], env);
+		if (pt2d[i].stay_high != NULL)
+		{
+			if (pt2d[i].stay_high->memz != pt2d[i].memz)
+				ft_draw_slope(pt2d[i].stay_high[0], pt2d[i - 1], env);//
+			else
+				ft_draw_line(pt2d[i].stay_high[0], pt2d[i], env);
+		}
+	}
+	else
+	{
+		ft_draw_line(pt2d[i], pt2d[i - 1], env);
+		if (pt2d[i].stay_high != NULL)
+		{
+			if (pt2d[i].stay_high->memz != pt2d[i].memz)
+				ft_draw_slope(pt2d[i], pt2d[i].stay_high[0], env);//
+			else
+				ft_draw_line(pt2d[i].stay_high[0], pt2d[i], env);
+		}
+	}
+	return ;
+}
 
 static void		ft_draw_pt2d(t_ls2d pt2d, const t_env *env)
 {
@@ -65,42 +91,8 @@ static void		ft_draw_pt2d(t_ls2d pt2d, const t_env *env)
 	while (pt2d[i].x != 0)
 	{
 		mlx_pixel_put(env->mlx, env->win, pt2d[i].x, pt2d[i].y, COLOR);
-		if (pt2d[i].memz == pt2d[i - 1].memz && i != 0)
-		{
-			ft_draw_line(pt2d[i - 1], pt2d[i], env);
-			if (pt2d[i].stay_high != NULL)
-			{
-				if (pt2d[i].stay_high->memz != pt2d[i].memz)
-					ft_draw_slope(pt2d[i].stay_high[0], pt2d[i - 1], env);
-				else
-				{
-					ft_draw_line(pt2d[i].stay_high[0], pt2d[i], env);
-					ft_draw_slope(pt2d[i - 1], pt2d[i].stay_high[0], env);
-				}
-			}
-		}
-		else if (i != 0)
-		{
-			ft_draw_line(pt2d[i], pt2d[i - 1], env);
-			if (pt2d[i].stay_high != NULL)
-			{
-				if (pt2d[i].stay_high->memz != pt2d[i].memz)
-					ft_draw_slope(pt2d[i], pt2d[i].stay_high[0], env);
-				else
-					ft_draw_line(pt2d[i].stay_high[0], pt2d[i], env);
-			}
-		}
-//		if (pt2d[i].stay_high != NULL)
-//		{
-//			if (pt2d[i].stay_high->memz != pt2d[i].memz)
-//				ft_draw_slope(pt2d[i].stay_high[0], pt2d[i], env);
-//			else
-//			{
-//				ft_draw_line(pt2d[i].stay_high[0], pt2d[i], env);
-//				ft_draw_slope(pt2d[i], pt2d[i].stay_high[0], env);
-//			}
-//		}
-
+		if (i > 0)
+			ft_choose_itself_like_a_big_boy(pt2d, i,  env);
 		i++;
 	}
 	return ;
