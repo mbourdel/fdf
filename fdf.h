@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 21:31:05 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/11 19:19:49 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/16 18:41:59 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 # include "./libft/libft.h"
 # include "get_next_line.h"
 
-# define XWIN_SIZE 1000
+# define XWIN_SIZE 2000
 # define YWIN_SIZE 500
-# define SPACE 20
+# define SPACE 40
 # define HEIGHT 10
 # define XBEGIN 1
 # define YBEGIN 400
