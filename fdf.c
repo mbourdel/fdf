@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/27 18:52:16 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/08 18:13:23 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/16 21:13:17 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,11 @@ int			main(int ac, char **av)
 		ft_putstr("ERROR: invalid arguments\n");
 		return (1);
 	}
+	close(env.fd);
+	env.fname = av[1];
+	env.wesh = 0;
+	mlx_expose_hook(env.mlx, expose_hook, &env);
 	mlx_key_hook(env.win, key_hook, &env);
-	mlx_expose_hook(env.win, expose_hook, &env);
 	mlx_loop(env.mlx);
 	return (0);
 }
