@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 21:31:05 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/16 21:09:02 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/19 12:08:06 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # define YWIN_SIZE 500
 # define SPACE 40
 # define HEIGHT 10
-# define XBEGIN 10
-# define YBEGIN 200
+# define XBEGIN 1
+# define YBEGIN 400
 # define CST 0.9
 # define WHITE 0xFFFFFF
 # define RED 0xFF0000
@@ -52,10 +52,7 @@ struct					s_env
 {
 	void				*mlx;
 	void				*win;
-	char				*fname;
 	int					fd;
-	int					wesh;
-	//t_map				map;
 };
 
 /*
@@ -87,7 +84,7 @@ typedef t_pt2d			*t_ls2d;
 /*
 ** Function pull the map from file and convert point 3D->2D
 */
-t_map					ft_get_the_map(char *fname, t_map map);
+t_map					ft_get_the_map(int fd, t_map map);
 t_ls3d					ft_set_pt3d(t_map map);
 t_ls2d					ft_set_pt2d(t_ls3d pt3d);
 

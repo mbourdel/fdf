@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/06 12:03:51 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/16 21:19:32 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/19 12:11:39 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void		ft_draw_line(t_pt2d origin, t_pt2d arrival, t_env *env)
 	dy = (arrival.y - origin.y) * 2;
 	while (origin.x <= arrival.x)
 	{
-		mlx_pixel_put(env->mlx, env->win, (origin.x + env->wesh), origin.y, ACLR);
+		mlx_pixel_put(env->mlx, env->win, origin.x, origin.y, ACLR);
 		origin.x = origin.x + 1;
 		if ((e = (e - dy)) <= 0)
 		{
@@ -45,7 +45,7 @@ static void		ft_draw_flope(t_pt2d origin, t_pt2d arrival, t_env *env)
 	dx = abs(arrival.x - origin.x) * 2;
 	while (origin.y <= arrival.y)
 	{
-		mlx_pixel_put(env->mlx, env->win, (origin.x + env->wesh), origin.y, BCLR);
+		mlx_pixel_put(env->mlx, env->win, origin.x, origin.y, BCLR);
 		origin.y = origin.y + 1;
 		if ((e = (e - dx)) <= 0)
 		{
@@ -67,7 +67,7 @@ static void		ft_draw_slope(t_pt2d origin, t_pt2d arrival, t_env *env)
 	dx = (arrival.x - origin.x) * 2;
 	while (origin.y <= arrival.y)
 	{
-		mlx_pixel_put(env->mlx, env->win, (origin.x + env->wesh), origin.y, BCLR);
+		mlx_pixel_put(env->mlx, env->win, origin.x, origin.y, BCLR);
 		origin.y = origin.y + 1;
 		if ((e = (e - dx)) <= 0)
 		{
@@ -129,7 +129,7 @@ static void		ft_draw_pt2d(t_ls2d pt2d, t_env *env)
 	i = 0;
 	while (pt2d[i].x != 0)
 	{
-		mlx_pixel_put(env->mlx, env->win, (pt2d[i].x + env->wesh), pt2d[i].y, COLOR);
+		mlx_pixel_put(env->mlx, env->win, pt2d[i].x, pt2d[i].y, COLOR);
 		if (i > 0)
 			ft_choose_itself_like_a_big_boy(pt2d, i,  env);
 		i++;
@@ -144,7 +144,7 @@ void			ft_make_the_taff(t_env *env)
 	t_ls2d		pt2d;
 
 	map = NULL;
-	map = ft_get_the_map(env->fname, map);
+	map = ft_get_the_map(env->fd, map);
 	pt3d = ft_set_pt3d(map);
 	pt2d = ft_set_pt2d(pt3d);
 	ft_draw_pt2d(pt2d, env);

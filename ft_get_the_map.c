@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 21:34:20 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/16 21:07:52 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/19 12:09:26 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,11 @@ static int		*ft_get_int_line(int fd, int *line, int *size)
 	return (line);
 }
 
-t_map			ft_get_the_map(char *fname, t_map map)
+t_map			ft_get_the_map(int fd, t_map map)
 {
 	int			*line;
 	int			size;
-	int			fd;
 
-	fd = open(fname, O_RDONLY);
 	size = 1;
 	while (size > 0)
 	{
@@ -82,6 +80,6 @@ t_map			ft_get_the_map(char *fname, t_map map)
 			map = ft_put_on_link(line, map, size);
 		free(line);
 	}
-	close(fd);
+//	close(fd);
 	return (ft_rev_map(map));
 }

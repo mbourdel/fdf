@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/06 10:44:24 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/16 20:54:57 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/19 12:12:46 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,7 @@ int		key_hook(int keycode, t_env *env)
 		exit(0);
 	if (env->fd == 0)
 		return (0);
-	if (keycode == 65361)
-		env->wesh += 30;
-	if (keycode == 65363)
-		env->wesh -= 30;
-	ft_putnbr(keycode);
-	ft_putchar('\n');
-	return (env->wesh);
+	return (0);
 }
 
 int		expose_hook(t_env *env)

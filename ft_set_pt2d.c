@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/05 19:08:54 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/16 20:41:23 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/19 12:13:27 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_ls2d			ft_set_pt2d(t_ls3d pt3d)
 
 	i = 0;
 	point = (t_ls2d)malloc(sizeof(t_pt2d) * (ft_nb_point(pt3d) + 1));
-	while (pt3d[i].x != -727)
+	while (pt3d[i].x)
 	{
 		point[i].x = (((pt3d[i].x + (CST * pt3d[i].z))));
 		point[i].y = (-pt3d[i].y + ((CST / 2) * pt3d[i].z));
