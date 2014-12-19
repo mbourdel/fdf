@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 21:34:20 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/19 12:09:26 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/19 13:23:07 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,5 @@ t_map			ft_get_the_map(int fd, t_map map)
 			map = ft_put_on_link(line, map, size);
 		free(line);
 	}
-//	close(fd);
 	return (ft_rev_map(map));
 }

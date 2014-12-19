@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/05 19:08:54 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/19 12:13:27 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/19 13:38:59 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ static t_ls2d	ft_stay_high(int i, t_ls3d pt3d)
 {
 	t_ls2d		stay_high;
 
-	stay_high = (t_ls2d)malloc(sizeof(t_pt2d));
 	if (pt3d[i].stay_high == NULL)
 		return (NULL);
+	stay_high = (t_ls2d)malloc(sizeof(t_pt2d));
 	stay_high->x = (((pt3d[i].stay_high->x + (CST * pt3d[i].stay_high->z))));
 	stay_high->y = (-pt3d[i].stay_high->y + ((CST / 2) * pt3d[i].stay_high->z));
 	stay_high->memz = pt3d[i].stay_high->y;

@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 21:31:05 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/19 12:08:06 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/19 14:20:07 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,6 @@ struct					s_line
 typedef t_line			*t_map;
 
 /*
-** Struct environment
-*/
-typedef struct s_env	t_env;
-struct					s_env
-{
-	void				*mlx;
-	void				*win;
-	int					fd;
-};
-
-/*
 ** Struct content each point on 3D (x,y,z)
 */
 typedef struct s_pt3d	t_pt3d;
@@ -82,11 +71,24 @@ struct					s_pt2d
 typedef t_pt2d			*t_ls2d;
 
 /*
+** Struct environment
+*/
+typedef struct s_env	t_env;
+struct					s_env
+{
+	void				*mlx;
+	void				*win;
+	int					fd;
+	t_ls2d				pt2d;
+};
+
+/*
 ** Function pull the map from file and convert point 3D->2D
 */
 t_map					ft_get_the_map(int fd, t_map map);
 t_ls3d					ft_set_pt3d(t_map map);
 t_ls2d					ft_set_pt2d(t_ls3d pt3d);
+int						ft_map(t_env *env);
 
 /*
 ** Function for the mlx

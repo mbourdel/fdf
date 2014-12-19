@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mlx_stuff.c                                     :+:      :+:    :+:   */
+/*   ft_map.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/06 10:44:24 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/19 14:28:39 by mbourdel         ###   ########.fr       */
+/*   Created: 2014/12/19 14:03:58 by mbourdel          #+#    #+#             */
+/*   Updated: 2014/12/19 14:14:38 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int		key_hook(int keycode, t_env *env)
+int			ft_map(t_env *env)
 {
-	if (keycode == 65307)
-		exit(0);
-	if (env->fd == 0)
-		return (0);
-	return (0);
-}
+	t_map		map;
+	t_ls3d		pt3d;
 
-int		expose_hook(t_env *env)
-{
-	ft_make_the_taff(env);
+	map = NULL;
+	map = ft_get_the_map(env->fd, map);
+	if (map == NULL)
+		return (1);
+	pt3d = ft_set_pt3d(map);
+	env->pt2d = ft_set_pt2d(pt3d);
 	return (0);
 }
