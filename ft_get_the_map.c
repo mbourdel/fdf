@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 21:34:20 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/19 13:23:07 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/19 16:24:34 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,11 @@ static int		*ft_get_int_line(int fd, int *line, int *size)
 	i = 0;
 	while (i < *size)
 	{
+		if (!ft_isdigit(split[i][0]))
+		{
+			*size = -1;
+			return (0);
+		}
 		line[i] = ft_atoi(split[i]);
 		free(split[i]);
 		i++;
@@ -80,5 +85,7 @@ t_map			ft_get_the_map(int fd, t_map map)
 			map = ft_put_on_link(line, map, size);
 		free(line);
 	}
+	if (size < 0)
+		return (NULL);
 	return (ft_rev_map(map));
 }
