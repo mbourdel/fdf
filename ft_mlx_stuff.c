@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/06 10:44:24 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/19 17:35:27 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/19 18:03:21 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int		key_hook(int keycode, t_env *env)
 		env->xvar -= 30;
 //	ft_putnbr(keycode);
 //	ft_putchar('\n');
+	mlx_clear_window(env->mlx, env->win);
+	ft_make_the_taff(env);
 	return (0);
 }
 
