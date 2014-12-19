@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 21:31:05 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/19 14:20:07 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/19 17:35:33 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ struct					s_env
 	void				*win;
 	int					fd;
 	t_ls2d				pt2d;
+	int					xvar;
 };
 
 /*
