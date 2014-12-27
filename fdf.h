@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 21:31:05 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/27 18:39:08 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/27 19:52:15 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@
 # define XBEGIN 1
 # define YBEGIN 400
 # define CST 0.9
-# define WHITE 0xFFFFFF
+# define WHITE 0xFFFFFFFFFF
 # define RED 0xFF0000
-# define COLOR (WHITE - ((pt2d[i].memz) * 1000))
-# define BCLR (WHITE - ((origin.memz * 1000) - (origin.y * 100)))
-# define ACLR (WHITE - (origin.memz * 1000))
+# define COLOR (WHITE - ((pt2d[i].memz) * 10000))
+# define BCLR (WHITE - ((origin.memz * 10000) - (origin.y * 1000)))
+# define ACLR (WHITE - (origin.memz * 10000))
 
 /*
 ** Struct list content each line of the map as integer

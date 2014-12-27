@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:35:29 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/27 18:50:13 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/27 19:49:36 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 void		ft_pixel_put_img(t_env *env, int x, int y, unsigned long color)
 {
 	int				i;
-	unsigned char	clr[(env->img.bpp / 8)];
+	unsigned char	clr[(env->img.bpp / 8) - 1];
 
 	i = 0;
-	while (i < (env->img.bpp / 8))
+	while (i < (env->img.bpp / 8) - 1)
 	{
 		clr[i] = color >> ((i * 8) + 8);
 		i++;
