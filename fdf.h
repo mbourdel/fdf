@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 21:31:05 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/19 17:35:33 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/27 18:39:08 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include "get_next_line.h"
 
 # define XWIN_SIZE 2000
-# define YWIN_SIZE 500
+# define YWIN_SIZE 1200
 # define SPACE 40
 # define HEIGHT 10
 # define XBEGIN 1
@@ -43,6 +43,32 @@ struct					s_line
 	t_line				*nxt;
 };
 typedef t_line			*t_map;
+
+/*
+** Struct content all elements of the image
+*/
+typedef struct s_img	t_img;
+struct					s_img
+{
+	void				*img_ptr;
+	char				*data;
+	int					bpp;
+	int					sizeline;
+	int					endian;
+};
+
+/*
+** Struct content the value require for define the pixel position
+*/
+typedef struct s_value	t_value;
+struct					s_value
+{
+	int					space;
+	int					xbegin;
+	int					ybegin;
+	int					height;
+	int					cst;
+};
 
 /*
 ** Struct content each point on 3D (x,y,z)
@@ -78,6 +104,8 @@ struct					s_env
 {
 	void				*mlx;
 	void				*win;
+	t_img				img;
+	t_value				value;
 	int					fd;
 	t_ls2d				pt2d;
 	int					xvar;
@@ -97,10 +125,16 @@ int						ft_map(t_env *env);
 int						key_hook(int keycode, t_env *env);
 int						expose_hook(t_env *env);
 int						loop_hook(t_env *env);
+void					ft_img(t_env *env);
 
 /*
 ** Function "make_the_taff" call all function on the expose
 */
 void					ft_make_the_taff(t_env *env);
+
+/*
+** Function for draw on the screen
+*/
+void					ft_pixel_put_img(t_env *env, int x, int y, unsigned long color);
 
 #endif
