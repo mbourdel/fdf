@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/06 10:44:24 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/27 19:06:42 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/28 20:21:54 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,22 @@ int		key_hook(int keycode, t_env *env)
 		env->xvar += 30;
 	if (keycode == 65361)
 		env->xvar -= 30;
+	if (keycode == 65362)
+		env->yvar -= 20;
+	if (keycode == 65364)
+		env->yvar += 20;
 //	ft_putnbr(keycode);
 //	ft_putchar('\n');
-	mlx_destroy_image(env->mlx, env->img.img_ptr);
-	ft_img(env);
+//	mlx_destroy_image(env->mlx, env->img.img_ptr);
+//	ft_img(env);
+	ft_bzero(env->img.data, (XWIN_SIZE * YWIN_SIZE * env->img.bpp));
 	ft_make_the_taff(env);
 	return (0);
 }
 
 int		expose_hook(t_env *env)
 {
-	ft_img(env);
+	ft_bzero(env->img.data, (XWIN_SIZE * YWIN_SIZE * env->img.bpp));
 	ft_make_the_taff(env);
 	return (0);
 }

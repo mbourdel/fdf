@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 21:31:05 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/27 19:52:15 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/28 16:50:23 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@
 # define XWIN_SIZE 2000
 # define YWIN_SIZE 1200
 # define SPACE 40
-# define HEIGHT 10
+# define HEIGHT 13
 # define XBEGIN 1
 # define YBEGIN 400
 # define CST 0.9
-# define WHITE 0xFFFFFFFFFF
+# define WHITE 0xFFFFFF
 # define RED 0xFF0000
-# define COLOR (WHITE - ((pt2d[i].memz) * 10000))
-# define BCLR (WHITE - ((origin.memz * 10000) - (origin.y * 1000)))
-# define ACLR (WHITE - (origin.memz * 10000))
+# define COLOR (WHITE - ((pt2d[i].memz) * 300))
+# define BCLR (WHITE - (((origin.memz * 280))))
+# define ACLR (WHITE - (origin.memz * 300))
 
 /*
 ** Struct list content each line of the map as integer
@@ -109,6 +109,7 @@ struct					s_env
 	int					fd;
 	t_ls2d				pt2d;
 	int					xvar;
+	int					yvar;
 };
 
 /*
@@ -135,6 +136,6 @@ void					ft_make_the_taff(t_env *env);
 /*
 ** Function for draw on the screen
 */
-void					ft_pixel_put_img(t_env *env, int x, int y, unsigned long color);
+void					ft_pixel_put_img(t_env *env, int x, int y, unsigned int color);
 
 #endif

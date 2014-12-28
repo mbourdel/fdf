@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/06 12:03:51 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/27 18:29:05 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/28 16:50:06 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void		ft_draw_line(t_pt2d origin, t_pt2d arrival, t_env *env)
 	while (origin.x <= arrival.x)
 	{
 	//	mlx_pixel_put(env->mlx, env->win, (origin.x + env->xvar), origin.y, ACLR);
-		ft_pixel_put_img(env, (origin.x + env->xvar), origin.y, ACLR);
+		ft_pixel_put_img(env, (origin.x + env->xvar), (origin.y + env->yvar), ACLR);
 		origin.x = origin.x + 1;
 		if ((e = (e - dy)) <= 0)
 		{
@@ -40,14 +40,16 @@ static void		ft_draw_flope(t_pt2d origin, t_pt2d arrival, t_env *env)
 	int		dx;
 	int		dy;
 	int		e;
+	unsigned int color;
 
+	color = BCLR;
 	e = abs(arrival.y - origin.y);
 	dy = e * 2;
 	dx = abs(arrival.x - origin.x) * 2;
 	while (origin.y <= arrival.y)
 	{
 	//	mlx_pixel_put(env->mlx, env->win, (origin.x + env->xvar), origin.y, BCLR);
-		ft_pixel_put_img(env, (origin.x + env->xvar), origin.y, BCLR);
+		ft_pixel_put_img(env, (origin.x + env->xvar), (origin.y +env->yvar), color);
 		origin.y = origin.y + 1;
 		if ((e = (e - dx)) <= 0)
 		{
@@ -70,7 +72,7 @@ static void		ft_draw_slope(t_pt2d origin, t_pt2d arrival, t_env *env)
 	while (origin.y <= arrival.y)
 	{
 	//	mlx_pixel_put(env->mlx, env->win, (origin.x + env->xvar), origin.y, BCLR);
-		ft_pixel_put_img(env, (origin.x + env->xvar), origin.y, BCLR);
+		ft_pixel_put_img(env, (origin.x + env->xvar), (origin.y +env->yvar), BCLR);
 		origin.y = origin.y + 1;
 		if ((e = (e - dx)) <= 0)
 		{
@@ -109,7 +111,7 @@ static void		ft_draw_pt2d(t_ls2d pt2d, t_env *env)
 	while (pt2d[i].x != 0)
 	{
 	//	mlx_pixel_put(env->mlx, env->win, (pt2d[i].x + env->xvar), pt2d[i].y, COLOR);
-		ft_pixel_put_img(env, (pt2d[i].x + env->xvar), pt2d[i].y, COLOR);
+		ft_pixel_put_img(env, (pt2d[i].x + env->xvar), (pt2d[i].y + env->yvar), COLOR);
 		if (i > 0)
 			ft_choose_itself_like_a_big_boy(pt2d, i, env);
 		i++;

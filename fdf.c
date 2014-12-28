@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/27 18:52:16 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/27 19:06:20 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/28 17:36:50 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,10 @@ int			main(int ac, char **av)
 	}
 	close(env.fd);
 	env.xvar = 0;
-	ft_make_the_taff(&env);
+	env.yvar = 0;
+	//ft_make_the_taff(&env);
 	mlx_key_hook(env.win, key_hook, &env);
-	mlx_expose_hook(env.mlx, expose_hook, &env);
+	mlx_expose_hook(env.win, expose_hook, &env);
 	mlx_loop(env.mlx);
 	return (0);
 }

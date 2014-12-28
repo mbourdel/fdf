@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/01 19:07:09 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/19 14:44:03 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/28 19:57:09 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,5 @@ t_ls3d			ft_set_pt3d(t_map map)
 		i[2] = 1;
 	}
 	point[++i[1]].x = 0;
-	return (point);
+	return (point); // one fucking line to much
 }
