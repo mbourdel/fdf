@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 21:34:20 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/19 16:24:34 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/30 20:01:50 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static int		*ft_get_int_line(int fd, int *line, int *size)
 	i = 0;
 	while (i < *size)
 	{
-		if (!ft_isdigit(split[i][0]))
+		if (!ft_isnbr(split[i]))
 		{
 			*size = -1;
 			return (0);
