@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:35:29 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/28 17:28:24 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/30 17:55:19 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void		ft_pixel_put_img(t_env *env, int x, int y, unsigned int color)
 	int				i;
 	unsigned char	clr[(env->img.bpp / 8) - 1];
 
-	if (!(x > XWIN_SIZE || y > YWIN_SIZE))
+	if (!(x > XWIN_SIZE || y > YWIN_SIZE) && x >= 0 && y >= 0)
 	{
 		i = 0;
 		while (i < (env->img.bpp / 8) - 1)
@@ -27,7 +27,8 @@ void		ft_pixel_put_img(t_env *env, int x, int y, unsigned int color)
 		}
 		while (i >= 0)
 		{
-			env->img.data[y * env->img.sizeline + x * env->img.bpp / 8 + i] = clr[i];
+			env->img.data[y * env->img.sizeline + x * env->img.bpp / 8 + i] =
+				clr[i];
 			i--;
 		}
 	}

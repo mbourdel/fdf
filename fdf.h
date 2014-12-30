@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 21:31:05 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/28 16:50:23 by mbourdel         ###   ########.fr       */
+/*   Updated: 2014/12/30 17:49:09 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define CST 0.9
 # define WHITE 0xFFFFFF
 # define RED 0xFF0000
-# define COLOR (WHITE - ((pt2d[i].memz) * 300))
+# define COLOR (WHITE - ((env->pt2d[i].memz) * 300))
 # define BCLR (WHITE - (((origin.memz * 280))))
 # define ACLR (WHITE - (origin.memz * 300))
 
@@ -131,7 +131,7 @@ void					ft_img(t_env *env);
 /*
 ** Function "make_the_taff" call all function on the expose
 */
-void					ft_make_the_taff(t_env *env);
+void					ft_draw_pt2d(t_env *env);
 
 /*
 ** Function for draw on the screen
