@@ -6,28 +6,24 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 18:57:51 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/11/11 17:48:48 by mbourdel         ###   ########.fr       */
+/*   Updated: 2015/01/02 18:16:06 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
+void		*ft_memccpy(void *dst, const void *src, int c, size_t len)
 {
-	int			i;
-	char		*des;
-	const char	*sr;
-
-	i = 0;
-	des = dest;
-	sr = src;
-	while (i < (int)n && sr[i - 1] != c)
+	while (len)
 	{
-		des[i] = sr[i];
-		i++;
-		if (i == (int)n)
-			return (NULL);
+		*((char*)dst) = *((char*)src);
+		dst = (void*)((char*)dst + 1);
+		src = (void*)((char*)src + 1);
+		if ((char)(c) == *((char*)dst - 1))
+		{
+			return (dst);
+		}
+		len--;
 	}
-	dest += i;
-	return (dest);
+	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 21:31:05 by mbourdel          #+#    #+#             */
-/*   Updated: 2015/01/04 16:45:50 by mbourdel         ###   ########.fr       */
+/*   Updated: 2015/01/04 18:48:35 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,18 @@ int						key_hook(int keycode, t_env *env);
 int						expose_hook(t_env *env);
 int						loop_hook(t_env *env);
 void					ft_img(t_env *env);
+
+/*
+** Function for draw line between to point
+*/
+void					ft_draw_cone(t_pt2d origin, t_pt2d arrival, t_env *env);
+void					ft_draw_ctwo(t_pt2d origin, t_pt2d arrival, t_env *env);
+void					ft_draw_cthree(t_pt2d origin, t_pt2d arrival, t_env *env);
+void					ft_draw_cfour(t_pt2d origin, t_pt2d arrival, t_env *env);
+void					ft_draw_cfive(t_pt2d origin, t_pt2d arrival, t_env *env);
+void					ft_draw_csix(t_pt2d origin, t_pt2d arrival, t_env *env);
+void					ft_draw_cseven(t_pt2d origin, t_pt2d arrival, t_env *env);
+void					ft_draw_ceight(t_pt2d origin, t_pt2d arrival, t_env *env);
 
 /*
 ** Function "make_the_taff" call all function on the expose

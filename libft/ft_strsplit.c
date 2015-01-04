@@ -6,58 +6,37 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 13:06:24 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/01 16:01:44 by mbourdel         ###   ########.fr       */
+/*   Updated: 2015/01/02 18:38:48 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char		**ft_split(char **ret, char *str, char c)
+char	**ft_strsplit(const char *s, char c)
 {
-	int		i;
-	int		j;
-	int		x;
+	char	**ret;
+	size_t	i;
+	size_t	j;
+	size_t	len;
 
-	x = 0;
+	if (!s || !c)
+		return (0);
+	ret = ft_memalloc(ft_strlen(s) + 1);
 	i = 0;
 	j = 0;
-	while (str[x])
+	while (s[i])
 	{
-		if (str[x] != c)
-			ret[j][i++] = str[x++];
-		else if (str[x - 1] != c && ret[j][0] != '\0')
-		{
-			x++;
-			i = 0;
-			j++;
-		}
+		if (s[i] == c)
+			i++;
 		else
-			x++;
+		{
+			len = 0;
+			while (s[i + len] && (s[i + len] != c))
+				len++;
+			ret[j++] = ft_strsub(s, i, len);
+			i = i + len;
+		}
 	}
-	ret[++j][0] = '\0';
+	ret[j] = 0;
 	return (ret);
-}
-
-char			**ft_strsplit(const char *s, char c)
-{
-	char	*str;
-	char	**ret;
-	int		nbofstr;
-	int		i;
-
-	if (!*s)
-		return (NULL);
-	str = (char*)s;
-	i = 0;
-	nbofstr = 0;
-	if (str[i] != c)
-		nbofstr++;
-	while (str[++i])
-		if (str[i] == c && str[i + 1] != c)
-			nbofstr++;
-	i = 0;
-	ret = (char**)malloc(sizeof(char*) * nbofstr);
-	while (i <= nbofstr)
-		ret[i++] = (char*)ft_memalloc(ft_strlen(str));
-	return (ft_split(ret, str, c));
 }

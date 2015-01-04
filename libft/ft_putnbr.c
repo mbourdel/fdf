@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:36:15 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/11/07 19:25:13 by mbourdel         ###   ########.fr       */
+/*   Updated: 2015/01/02 18:11:23 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,5 @@
 
 void	ft_putnbr(int n)
 {
-	if (n < 0)
-	{
-		ft_putchar('-');
-		n = -n;
-	}
-	if (n < 10)
-		ft_putchar('0' + n);
-	else
-	{
-		ft_putnbr(n / 10);
-		ft_putnbr(n % 10);
-	}
+	ft_putstr(ft_itoa(n));
 }

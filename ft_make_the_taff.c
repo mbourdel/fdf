@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/06 12:03:51 by mbourdel          #+#    #+#             */
-/*   Updated: 2015/01/04 17:04:16 by mbourdel         ###   ########.fr       */
+/*   Updated: 2015/01/04 18:50:09 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,10 +130,7 @@ void			ft_draw_pt2d(t_env *env)
 	//	ft_pixel_put_img(env, (env->pt2d[i].x + env->xvar),
 	//			(env->pt2d[i].y + env->yvar), COLOR);
 		if (i > 0 && env->pt2d[i].line == env->pt2d[i - 1].line)
-		{
 			ft_draw(env->pt2d[i - 1], env->pt2d[i], env);
-			ft_draw(env->pt2d[i], env->pt2d[i - 1], env);
-		}
 		if (env->pt2d[i].stay_high != NULL)
 			ft_draw(env->pt2d[i], env->pt2d[i].stay_high[0], env);
 		i++;

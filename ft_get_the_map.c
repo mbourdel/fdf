@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 21:34:20 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/30 20:01:50 by mbourdel         ###   ########.fr       */
+/*   Updated: 2015/01/04 17:47:45 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int		*ft_get_int_line(int fd, int *line, int *size)
 	if (get_next_line(fd, &str) <= 0)
 		return (0);
 	split = ft_strsplit(str, ' ');
-	while (split[*size][0] != '\0')
+	while (split[*size])
 		*size = *size + 1;
 	line = malloc(sizeof(int) * *size);
 	i = 0;
