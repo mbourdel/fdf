@@ -6,7 +6,7 @@
 #    By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/27 19:33:24 by mbourdel          #+#    #+#              #
-#    Updated: 2014/12/27 15:42:06 by mbourdel         ###   ########.fr        #
+#    Updated: 2015/01/04 16:11:51 by mbourdel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRC_PATH = ./
 SRC = fdf.c ft_get_the_map.c get_next_line.c
 SRC += ft_set_pt3d.c ft_set_pt2d.c ft_make_the_taff.c
 SRC += ft_mlx_stuff.c ft_map.c ft_img.c ft_pixel_put_img.c
+SRC += ft_draw.c
 
 OBJ = $(SRC:.c=.o)
 

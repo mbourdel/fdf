@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 21:31:05 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/30 17:49:09 by mbourdel         ###   ########.fr       */
+/*   Updated: 2015/01/04 16:45:50 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ struct					s_pt3d
 	int					x;
 	int					y;
 	int					z;
+	int					line;
 	t_pt3d				*stay_high;
 };
 typedef t_pt3d			*t_ls3d;
@@ -89,8 +90,9 @@ typedef t_pt3d			*t_ls3d;
 typedef struct s_pt2d	t_pt2d;
 struct					s_pt2d
 {
-	float				x;
-	float				y;
+	int					x;
+	int					y;
+	int					line;
 	int					memz;
 	t_pt2d				*stay_high;
 };
@@ -132,6 +134,7 @@ void					ft_img(t_env *env);
 ** Function "make_the_taff" call all function on the expose
 */
 void					ft_draw_pt2d(t_env *env);
+void					ft_draw(t_pt2d origin, t_pt2d arrival, t_env *env);
 
 /*
 ** Function for draw on the screen

@@ -6,12 +6,12 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/06 12:03:51 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/30 18:06:53 by mbourdel         ###   ########.fr       */
+/*   Updated: 2015/01/04 17:04:16 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
+/*
 static void		ft_draw_line(t_pt2d origin, t_pt2d arrival, t_env *env)
 {
 	int		dx;
@@ -20,7 +20,7 @@ static void		ft_draw_line(t_pt2d origin, t_pt2d arrival, t_env *env)
 
 	e = arrival.x - origin.x;
 	dx = e * 2;
-	dy = (arrival.y - origin.y) * 2;
+	dy = abs(arrival.y - origin.y) * 2;
 	while (origin.x <= arrival.x)
 	{
 		ft_pixel_put_img(env, (origin.x + env->xvar),
@@ -68,7 +68,7 @@ static void		ft_draw_slope(t_pt2d origin, t_pt2d arrival, t_env *env)
 
 	e = (arrival.y - origin.y);
 	dy = e * 2;
-	dx = (arrival.x - origin.x) * 2;
+	dx = abs(arrival.x - origin.x) * 2;
 	while (origin.y <= arrival.y)
 	{
 		ft_pixel_put_img(env, (origin.x + env->xvar),
@@ -114,6 +114,28 @@ void			ft_draw_pt2d(t_env *env)
 				(env->pt2d[i].y + env->yvar), COLOR);
 		if (i > 0)
 			ft_choose_itself_like_a_big_boy(env->pt2d, i, env);
+		i++;
+	}
+	mlx_put_image_to_window(env->mlx, env->win, env->img.img_ptr, 0, 0);
+	return ;
+}*/
+
+void			ft_draw_pt2d(t_env *env)
+{
+	int		i;
+
+	i = 0;
+	while (env->pt2d[i].x != 0)
+	{
+	//	ft_pixel_put_img(env, (env->pt2d[i].x + env->xvar),
+	//			(env->pt2d[i].y + env->yvar), COLOR);
+		if (i > 0 && env->pt2d[i].line == env->pt2d[i - 1].line)
+		{
+			ft_draw(env->pt2d[i - 1], env->pt2d[i], env);
+			ft_draw(env->pt2d[i], env->pt2d[i - 1], env);
+		}
+		if (env->pt2d[i].stay_high != NULL)
+			ft_draw(env->pt2d[i], env->pt2d[i].stay_high[0], env);
 		i++;
 	}
 	mlx_put_image_to_window(env->mlx, env->win, env->img.img_ptr, 0, 0);

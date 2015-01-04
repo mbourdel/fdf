@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/05 19:08:54 by mbourdel          #+#    #+#             */
-/*   Updated: 2014/12/19 13:38:59 by mbourdel         ###   ########.fr       */
+/*   Updated: 2015/01/04 17:00:32 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ t_ls2d			ft_set_pt2d(t_ls3d pt3d)
 		point[i].y = (-pt3d[i].y + ((CST / 2) * pt3d[i].z));
 		point[i].memz = pt3d[i].y;
 		point[i].stay_high = ft_stay_high(i, pt3d);
+		point[i].line = pt3d[i].line;
 		i++;
 	}
 	return (point);
