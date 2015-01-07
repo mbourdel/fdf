@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 21:31:05 by mbourdel          #+#    #+#             */
-/*   Updated: 2015/01/04 18:48:35 by mbourdel         ###   ########.fr       */
+/*   Updated: 2015/01/07 17:01:05 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define XWIN_SIZE 2000
 # define YWIN_SIZE 1200
 # define SPACE 40
-# define HEIGHT 13
+# define HEIGHT 10
 # define XBEGIN 1
 # define YBEGIN 400
 # define CST 0.9
@@ -152,5 +152,10 @@ void					ft_draw(t_pt2d origin, t_pt2d arrival, t_env *env);
 ** Function for draw on the screen
 */
 void					ft_pixel_put_img(t_env *env, int x, int y, unsigned int color);
+
+/*
+** Function for choose the good color :)
+*/
+unsigned int			ft_color(t_pt2d point);
 
 #endif

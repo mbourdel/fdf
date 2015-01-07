@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/04 18:19:11 by mbourdel          #+#    #+#             */
-/*   Updated: 2015/01/04 18:19:15 by mbourdel         ###   ########.fr       */
+/*   Updated: 2015/01/07 17:00:11 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,19 @@ void		ft_draw_cfive(t_pt2d origin, t_pt2d arrival, t_env *env)
 	int				e;
 	unsigned int	color;
 
-	color = ACLR;
+	color = ft_color(arrival);
 	e = arrival.y - origin.y;
 	dy = e * 2;
 	dx = abs(arrival.x - origin.x) * 2;
-	while (origin.y >= arrival.y)
+	while (origin.y <= arrival.y)
 	{
 		ft_pixel_put_img(env, (origin.x + env->xvar),
 				(origin.y + env->yvar), color);
-		origin.y -= 1;
-		if ((e -= dy) <= 0)
+		origin.y += 1;
+		if ((e -= dx) <= 0)
 		{
-			origin.x += 1;
-			e += dx;
+			origin.x -= 1;
+			e += dy;
 		}
 	}
 	return ;
@@ -44,19 +44,19 @@ void		ft_draw_csix(t_pt2d origin, t_pt2d arrival, t_env *env)
 	int				e;
 	unsigned int	color;
 
-	color = ACLR;
+	color = ft_color(arrival);
 	e = arrival.y - origin.y;
 	dy = e * 2;
 	dx = abs(arrival.x - origin.x) * 2;
-	while (origin.y >= arrival.y)
+	while (origin.y <= arrival.y)
 	{
 		ft_pixel_put_img(env, (origin.x + env->xvar),
 				(origin.y + env->yvar), color);
-		origin.y -= 1;
-		if ((e -= dy) <= 0)
+		origin.y += 1;
+		if ((e -= dx) <= 0)
 		{
-			origin.x -= 1;
-			e += dx;
+			origin.x += 1;
+			e += dy;
 		}
 	}
 	return ;
