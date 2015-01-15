@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/06 10:44:24 by mbourdel          #+#    #+#             */
-/*   Updated: 2015/01/13 18:41:40 by mbourdel         ###   ########.fr       */
+/*   Updated: 2015/01/15 19:10:50 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,18 @@ int		key_hook(int keycode, t_env *env)
 		env->value.height += 2;
 	if (keycode == 65453)
 		env->value.height -= 2;
+	if (keycode == 91 && env->value.space >= 1)
+		env->value.space -= 0.3;
+	if (keycode == 93 && env->value.space <= 300)
+		env->value.space += 0.3;
+	if (keycode == 65293)
+		env->value.setup == 0 ? (env->value.setup = 1)
+			: (env->value.setup = 0);
 	ft_map(env);
 	ft_putendl(ft_itoa(keycode));
 	ft_bzero(env->img.data, (XWIN_SIZE * YWIN_SIZE * (env->img.bpp / 8)));
 	ft_draw_pt2d(env);
+	ft_print_hud(env);
 	return (0);
 }
 
@@ -41,5 +49,6 @@ int		expose_hook(t_env *env)
 {
 	ft_bzero(env->img.data, (XWIN_SIZE * YWIN_SIZE * (env->img.bpp / 8)));
 	ft_draw_pt2d(env);
+	ft_print_hud(env);
 	return (0);
 }

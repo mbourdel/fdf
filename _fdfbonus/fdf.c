@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/27 18:52:16 by mbourdel          #+#    #+#             */
-/*   Updated: 2015/01/13 18:30:55 by mbourdel         ###   ########.fr       */
+/*   Updated: 2015/01/15 18:56:05 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int			main(int ac, char **av)
 		ft_putendl("ERROR: invalid map");
 	else
 	{
+		ft_altitude(&env);
 		env.mlx = mlx_init();
 		env.win = mlx_new_window(env.mlx, XWIN_SIZE, YWIN_SIZE, av[1]);
 		ft_img(&env);

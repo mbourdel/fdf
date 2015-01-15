@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 21:31:05 by mbourdel          #+#    #+#             */
-/*   Updated: 2015/01/13 18:34:22 by mbourdel         ###   ########.fr       */
+/*   Updated: 2015/01/15 18:54:03 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,16 @@ struct					s_img
 typedef struct s_value	t_value;
 struct					s_value
 {
-	int					space;
+	float				space;
 	int					xbegin;
 	int					ybegin;
 	int					height;
 	float				cst;
 	int					xvar;
 	int					yvar;
+	int					setup;
+	int					alt_max;
+	int					alt_min;
 };
 
 /*
@@ -78,9 +81,9 @@ struct					s_value
 typedef struct s_pt3d	t_pt3d;
 struct					s_pt3d
 {
-	int					x;
+	float				x;
 	int					y;
-	int					z;
+	float				z;
 	int					line;
 	t_pt3d				*stay_high;
 };
@@ -92,8 +95,8 @@ typedef t_pt3d			*t_ls3d;
 typedef struct s_pt2d	t_pt2d;
 struct					s_pt2d
 {
-	int					x;
-	int					y;
+	float				x;
+	float				y;
 	int					line;
 	int					memz;
 	t_pt2d				*stay_high;
@@ -141,12 +144,12 @@ void					ft_img(t_env *env);
 */
 void					ft_draw_cone(t_pt2d origin, t_pt2d arrival, t_env *env);
 void					ft_draw_ctwo(t_pt2d origin, t_pt2d arrival, t_env *env);
-void					ft_draw_cthree(t_pt2d origin, t_pt2d arrival, t_env *env);
-void					ft_draw_cfour(t_pt2d origin, t_pt2d arrival, t_env *env);
+//void					ft_draw_cthree(t_pt2d origin, t_pt2d arrival, t_env *env);
+//void					ft_draw_cfour(t_pt2d origin, t_pt2d arrival, t_env *env);
 void					ft_draw_cfive(t_pt2d origin, t_pt2d arrival, t_env *env);
 void					ft_draw_csix(t_pt2d origin, t_pt2d arrival, t_env *env);
-void					ft_draw_cseven(t_pt2d origin, t_pt2d arrival, t_env *env);
-void					ft_draw_ceight(t_pt2d origin, t_pt2d arrival, t_env *env);
+//void					ft_draw_cseven(t_pt2d origin, t_pt2d arrival, t_env *env);
+//void					ft_draw_ceight(t_pt2d origin, t_pt2d arrival, t_env *env);
 
 /*
 ** Function "make_the_taff" call all function on the expose
@@ -158,10 +161,12 @@ void					ft_draw(t_pt2d origin, t_pt2d arrival, t_env *env);
 ** Function for draw on the screen
 */
 void					ft_pixel_put_img(t_env *env, int x, int y, unsigned int color);
+void					ft_print_hud(t_env *env);
 
 /*
 ** Function for choose the good color :)
 */
-unsigned int			ft_color(t_pt2d point);
+void					ft_altitude(t_env *env);
+unsigned int			ft_color(t_pt2d point, t_env *env);
 
 #endif
